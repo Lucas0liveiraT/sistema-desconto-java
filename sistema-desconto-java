@@ -12,7 +12,8 @@ public class SistemaDesconto {
         System.out.println("Forma de pagamento:");
         System.out.println("1 - À vista (10% de desconto)");
         System.out.println("2 - Cartão (5% de desconto)");
-        System.out.println("3 - Outros (sem desconto)");
+        System.out.println("3 - Pix (15% de desconto)");
+        System.out.println("4 - Outros (sem desconto)");
 
         int formaPagamento = scanner.nextInt();
 
@@ -30,6 +31,8 @@ public class SistemaDesconto {
             return valor * 0.10;
         } else if (formaPagamento == 2) {
             return valor * 0.05;
+        } else if (formaPagamento == 3) {
+            return valor * 0.15; // NOVO DESCONTO PIX
         } else {
             return 0;
         }
