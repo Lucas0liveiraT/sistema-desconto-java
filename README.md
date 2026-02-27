@@ -1,2 +1,21 @@
-# sistema-desconto-java
-O sistema:  Recebe o valor da compra  Recebe a forma de pagamento  Aplica desconto:  1 → 10%  2 → 5%  Outros → 0%  Mostra:  Valor original  Valor do desconto  Valor final
+# Sistema de Desconto em Java
+
+Projeto simples desenvolvido para praticar lógica de programação em Java.
+
+## Funcionalidades
+
+- Cálculo de desconto baseado na forma de pagamento
+- Aplicação de porcentagem sobre o valor da compra
+- Exibição formatada dos valores
+
+## Regras de desconto
+
+- Forma 1 → 10%
+- Forma 2 → 5%
+- Outras formas → Sem desconto
+
+## Tecnologias
+
+- Java
+- Scanner
+- Estruturas condicionais (if/else)
