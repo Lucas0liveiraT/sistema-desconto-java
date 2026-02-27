@@ -1,49 +1,45 @@
-package TreinamentosERevisoes;
 import java.util.Scanner;
 
+public class SistemaDesconto {
 
-public class Treino1 {
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		
-		System.out.println("Digite o nome do cliente: ");
-		   String nomecliente = scanner.nextLine();
-		   
-		System.out.println("Digite o valor da compra: ");
-		   double valorcompra = scanner.nextDouble();
-  
-        System.out.println("Escolha a forma de pagamendo \n Digite 1 para pagamento À vista \n Digite 2 para pagamento por Débito \n Digite 3 para pagamento de crédito");
-           int formaPag = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-         double desconto;
-         double valtotal;
-         double valdesconto;
-           
-        if (formaPag == 1) {
-		   desconto = (10.0/100);		   
-	}
-        
-        else if (formaPag == 2) {
-           desconto = (5.0/100);         
-        }
+        System.out.println("Digite o valor da compra: ");
+        double valorCompra = scanner.nextDouble();
 
-        else {        	
-           desconto = 0;                   	
-        }
-        
-        valdesconto = (valorcompra * desconto);
-        valtotal = (valorcompra - valdesconto);
-        
-        
-        System.out.printf("Nome do cliente: %s%n", nomecliente);
-        System.out.printf("Valor original: %.2f%n", valorcompra);
-        System.out.printf("Valor do desconto: %.2f%n", valdesconto);
-        System.out.printf("Valor final: %.2f%n", valtotal);
-        
-        
+        System.out.println("Forma de pagamento:");
+        System.out.println("1 - À vista (10% de desconto)");
+        System.out.println("2 - Cartão (5% de desconto)");
+        System.out.println("3 - Outros (sem desconto)");
+
+        int formaPagamento = scanner.nextInt();
+
+        double desconto = calcularDesconto(valorCompra, formaPagamento);
+        double valorFinal = valorCompra - desconto;
+
+        mostrarResumo(valorCompra, desconto, valorFinal);
+
         scanner.close();
-}
+    }
+
+    public static double calcularDesconto(double valor, int formaPagamento) {
+
+        if (formaPagamento == 1) {
+            return valor * 0.10;
+        } else if (formaPagamento == 2) {
+            return valor * 0.05;
+        } else {
+            return 0;
+        }
+    }
+
+    public static void mostrarResumo(double valor, double desconto, double total) {
+
+        System.out.println("\n===== RESUMO DA COMPRA =====");
+        System.out.printf("Valor original: R$ %.2f%n", valor);
+        System.out.printf("Desconto: R$ %.2f%n", desconto);
+        System.out.printf("Valor final: R$ %.2f%n", total);
+    }
 }
