@@ -1,48 +1,59 @@
+package TreinamentosERevisoes;
 import java.util.Scanner;
 
-public class SistemaDesconto {
 
-    public static void main(String[] args) {
+public class Treino2 {
 
-        Scanner scanner = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Quantidade de alunos da turma: ");
+		int quantalunos = scanner.nextInt();
+		scanner.nextLine(); // limpa o Enter pendente
+		
+		double somanotas = 0;
+		double maiornota = 0;
+		double menornota = Double.MAX_VALUE;
+		int aprovados = 0;
+		String nomeMaiorNota = "";
+		double mediaSala = 0;
+		
+		for (int i = 1; i <= quantalunos; i++) { 
+		  
+		  System.out.println("Digite o nome do aluno: ");
+		  String aluno = scanner.nextLine();
 
-        System.out.println("Digite o valor da compra: ");
-        double valorCompra = scanner.nextDouble();
+          System.out.println("Digite a nota do aluno: ");
+		  double nota = scanner.nextDouble();
+		  scanner.nextLine(); // limpa o Enter depois da nota
+          
+          somanotas += nota;
+          
+            if (maiornota < nota) {	  
+               	maiornota = nota;           
+               	nomeMaiorNota = aluno;
+          }
+            if (menornota > nota) {
+                menornota = nota;
+            }
+            
+            if (nota >= 6) {
+            	   aprovados++;
+            	}
 
-        System.out.println("Forma de pagamento:");
-        System.out.println("1 - À vista (10% de desconto)");
-        System.out.println("2 - Cartão (5% de desconto)");
-        System.out.println("3 - Pix (15% de desconto)");
-        System.out.println("4 - Outros (sem desconto)");
+            
+		}
+		
+		 mediaSala = (somanotas / quantalunos);
+		
+		 System.out.printf("Média da turma: %.2f%n", mediaSala);
+         System.out.printf("Maior nota: %.2f%n", maiornota);
+         System.out.printf("Menor nota: %.2f%n", menornota);
+         System.out.printf("Aprovados: %d%n", aprovados);
+         System.out.printf("Aluno com a maior nota: %s%n", nomeMaiorNota);
+         
+         scanner.close();
+	}
 
-        int formaPagamento = scanner.nextInt();
-
-        double desconto = calcularDesconto(valorCompra, formaPagamento);
-        double valorFinal = valorCompra - desconto;
-
-        mostrarResumo(valorCompra, desconto, valorFinal);
-
-        scanner.close();
-    }
-
-    public static double calcularDesconto(double valor, int formaPagamento) {
-
-        if (formaPagamento == 1) {
-            return valor * 0.10;
-        } else if (formaPagamento == 2) {
-            return valor * 0.05;
-        } else if (formaPagamento == 3) {
-            return valor * 0.15; // NOVO DESCONTO PIX
-        } else {
-            return 0;
-        }
-    }
-
-    public static void mostrarResumo(double valor, double desconto, double total) {
-
-        System.out.println("\n===== RESUMO DA COMPRA =====");
-        System.out.printf("Valor original: R$ %.2f%n", valor);
-        System.out.printf("Desconto: R$ %.2f%n", desconto);
-        System.out.printf("Valor final: R$ %.2f%n", total);
-    }
 }
